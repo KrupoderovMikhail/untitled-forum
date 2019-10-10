@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Start page </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+</head>
+<body>
+<h1 align="Center">Welcome to the Forum of music lovers :)</h1>
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Genre</th>
+        <th>Album</th>
+        <th>Artist</th>
+        <th>Discussion</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="discussion: ${discussions}">
+        <td th:text="${discussion.name}"></td>
+        <td th:text="${discussion.email}"></td>
+        <td th:text="${discussion.genre}"></td>
+        <td th:text="${discussion.album}"></td>
+        <td th:text="${discussion.artist}"></td>
+
+        <td>
+            <textarea rows="4" cols="50" readonly="readonly" th:text="${discussion.discussion}">
+            </textarea>
+        </td>
+
+        <td><a th:href="@{/delete/{id}(id=${discussion.id})}">Delete</a></td>
+    </tr>
+</table>
+<a href="/add">Add new discussion</a>
+</table>
+</body>
+</html>
